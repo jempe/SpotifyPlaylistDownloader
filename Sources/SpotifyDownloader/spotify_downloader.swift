@@ -30,8 +30,9 @@ func saveAsCSV(playlists: [(String, String)]) {
     try! csvString.write(toFile: filename, atomically: true, encoding: .utf8)
 }
 
-let playlists = getPlaylists()
-let tracks = playlists.flatMap { getTracks(playlistId: $0.1) }
-let allTracks = Array(Set(tracks))
-saveAsCSV(playlists: allTracks)
-
+func main() {
+    let playlists = getPlaylists()
+    let tracks = playlists.flatMap { getTracks(playlistId: $0.1) }
+    let allTracks = Array(Set(tracks))
+    saveAsCSV(playlists: allTracks)
+}
